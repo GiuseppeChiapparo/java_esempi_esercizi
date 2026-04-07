@@ -1,4 +1,4 @@
-package squadra;
+package esercizio_2_squadra;
 
 public class Squadra {
     private String nome;

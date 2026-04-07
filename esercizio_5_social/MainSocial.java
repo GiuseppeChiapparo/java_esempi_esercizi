@@ -1,4 +1,4 @@
-package social_5;
+package esercizio_5_social;
 
 import java.util.Scanner;
 

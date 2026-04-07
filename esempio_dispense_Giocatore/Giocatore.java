@@ -1,4 +1,4 @@
-package esempio_Giocatore;
+package esempio_dispense_Giocatore;
 
 import java.util.Scanner;
 
