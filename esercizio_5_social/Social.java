@@ -73,8 +73,21 @@ public class Social {
             numAccounts = tastiera.nextInt();
         } while(numAccounts <= 0);
 
+        /* 
+            Sto assegnando all'attributo accounts 
+            un vettore di tipo Account grande
+            numAccounts che conterrà gli indirizzi
+            di memoria degli oggetti di tipo Account
+            che verranno creati nel ciclo for    
+        */
         this.accounts = new Account[numAccounts];
 
+        /*
+            Il ciclo for crea e inizializza da tastiera
+            gli oggetti di tipo Account e salva 
+            l'indirizzo di memoria di questi oggetti
+            nelle celle del vettore.  
+        */
         for(int i = 0; i < this.accounts.length; i++) {
             this.accounts[i] = new Account();
             this.accounts[i].inserisciDati(tastiera);
@@ -101,7 +114,7 @@ public class Social {
             somma = somma + accounts[i].getPostPubblicati();
         }
 
-        media = (double) somma / this.accounts.length;
+        media = (double) somma / accounts.length;
         
         return media;
     }
@@ -110,7 +123,7 @@ public class Social {
         int maxFollowers = this.accounts[0].getNumFollowers();
 
         for (int i = 1; i < this.accounts.length; i++) {
-            int followersAccountI = this.accounts[i].getNumFollowers();
+            int followersAccountI = accounts[i].getNumFollowers();
             if(followersAccountI > maxFollowers) {
                 maxFollowers = followersAccountI;
             }
@@ -119,9 +132,9 @@ public class Social {
         System.out.println("Gli account con il maggior numero di " +
                            "followers sono: ");
         for (int i = 0; i < accounts.length; i++) {
-            int followersAccountI = this.accounts[i].getNumFollowers();
+            int followersAccountI = accounts[i].getNumFollowers();
             if(followersAccountI == maxFollowers) {
-                String nicknameI = this.accounts[i].getNickname();
+                String nicknameI = accounts[i].getNickname();
                 System.out.println(nicknameI);
             }
         }
