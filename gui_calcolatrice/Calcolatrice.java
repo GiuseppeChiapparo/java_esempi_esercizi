@@ -1,0 +1,125 @@
+package gui_calcolatrice;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Calcolatrice {
+
+	private JFrame frame;
+	private JTextField display;
+    private double num1 = 0;
+    private String operatore = "";
+	
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	/**
+	 * Costruttore di default.
+	 */
+	public Calcolatrice() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame("Calcolatrice");
+        frame.setSize(569, 538);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(new BorderLayout());
+
+        display = new JTextField();
+        display.setFont(new Font("Arial", Font.BOLD, 24));
+        display.setHorizontalAlignment(JTextField.RIGHT);
+        frame.getContentPane().add(display, BorderLayout.NORTH);
+        
+        GridLayout griglia4x4 = new GridLayout(4,4);
+        
+        JPanel panel = new JPanel(griglia4x4);
+
+        String[] testiBottoni = {
+            "7","8","9","/",
+            "4","5","6","*",
+            "1","2","3","-",
+            "0","C","=","+"
+        };
+
+        for (int i = 0; i < testiBottoni.length; i++) {
+        	String testoBottone = testiBottoni[i];
+            JButton btn = new JButton(testoBottone);
+            Font f = new Font("Arial", Font.BOLD, 24);
+            btn.setFont(f);
+            btn.addActionListener(e -> gestisciInput(testoBottone));
+            panel.add(btn);
+        }
+        
+        frame.getContentPane().add(panel, BorderLayout.CENTER);
+        frame.setVisible(true);
+	}
+
+    private void gestisciInput(String cmd) {
+        if ("0123456789".contains(cmd)) {
+            display.setText(display.getText() + cmd);
+        } 
+        else if (cmd.equals("C")) {
+            display.setText("");
+            num1 = 0;
+            operatore = "";
+        } 
+        else if (cmd.equals("=")) {
+        	if (display.getText().equals("") == false) {
+        		double num2 = Double.parseDouble(display.getText());
+                double risultato = calcola(num1, num2, operatore);
+                display.setText("" + risultato);
+                operatore = "";
+        	}
+        } 
+        else { //+, -, *, /
+        	//se c'e' un numero da leggere si salva il numero, l'operazione e
+        	//cancella il contenuto
+        	if (display.getText().equals("") == false) { 
+        		num1 = Double.parseDouble(display.getText());
+                operatore = cmd;
+                display.setText("");
+        	}
+            
+        }
+    }
+
+    private double calcola(double a, double b, String op) {
+        switch (op) {
+            case "+": return a + b;
+            case "-": return a - b;
+            case "*": return a * b;
+            case "/": return a / b;
+        }
+        return 0;
+    }
+    
+    /**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Calcolatrice window = new Calcolatrice();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+	}
+
+}
