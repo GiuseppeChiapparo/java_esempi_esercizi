@@ -12,46 +12,62 @@ import javax.swing.JTextField;
 
 public class Calcolatrice {
 
-	private JFrame frame;
-	private JTextField display;
-    private double num1 = 0;
-    private String operatore = "";
-	
-	public JFrame getFrame() {
-		return frame;
-	}
+	private JFrame frame; //finestra principale
+	private JTextField display; //casella di testo per l'input dell'utente
+    private double num1 = 0; //salva il primo numero che l'utente inserisce
+    private String operatore = ""; //operazione che sarà selezionata
 
 	/**
-	 * Costruttore di default.
+	 * Costruttore di default. che richiama il metodo
+     * un metodo che genera l'interfaccia grafica.
 	 */
 	public Calcolatrice() {
-		initialize();
+		generaInterfaccia();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Inizializza il contenuto del Frame. 
+     * e alla fine lo rende visibile.
 	 */
-	private void initialize() {
-		frame = new JFrame("Calcolatrice");
-        frame.setSize(569, 538);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new BorderLayout());
+	private void generaInterfaccia() {
+		frame = new JFrame("Calcolatrice"); //Si crea il frame specificando il titolo della finestra 
+        frame.setSize(569, 538);  //dimensione iniziale della finestra
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //cosa succede quando si chiude la finestra
 
-        display = new JTextField();
-        display.setFont(new Font("Arial", Font.BOLD, 24));
-        display.setHorizontalAlignment(JTextField.RIGHT);
-        frame.getContentPane().add(display, BorderLayout.NORTH);
-        
-        GridLayout griglia4x4 = new GridLayout(4,4);
-        
-        JPanel panel = new JPanel(griglia4x4);
+        /*
+         * si imposta il layout del contenitore principale 
+         * della finestra. Come layout si sceglie un BorderLayout
+         * che divide lo spazio in 5 parti: nord, ovest, centro, 
+         * est, sud 
+         * */
+        frame.getContentPane().setLayout(new BorderLayout()); 
 
+        display = new JTextField(); //si crea la casella di testo
+        display.setFont(new Font("Arial", Font.BOLD, 24)); //si imposta il font del testo che comparira' nella casella di testo
+        display.setHorizontalAlignment(JTextField.RIGHT); //allineamento del testo
+        
+        /*
+         * Si aggiunge alla finestra principalela casella di 
+         * testo posizionandola nell'area nord della finestra. 
+         * */
+        frame.getContentPane().add(display, BorderLayout.NORTH); 
+        
+        //gestione del tastierino numerico con le operazioni
+
+        /*
+         * array di stringhe contenente i testi che verranno
+         * associati ai diversi bottoni 
+         * */
         String[] testiBottoni = {
             "7","8","9","/",
             "4","5","6","*",
             "1","2","3","-",
             "0","C","=","+"
         };
+
+        GridLayout griglia4x4 = new GridLayout(4,4);
+        
+        JPanel panel = new JPanel(griglia4x4);
 
         for (int i = 0; i < testiBottoni.length; i++) {
         	String testoBottone = testiBottoni[i];

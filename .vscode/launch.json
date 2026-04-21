@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "GiocatoriGUI",
+            "request": "launch",
+            "mainClass": "gui_giocatori.GiocatoriGUI",
+            "projectName": "vettori_oggetti_1beaab9f"
+        },
+        {
+            "type": "java",
+            "name": "MainAlbero",
+            "request": "launch",
+            "mainClass": "MainAlbero",
+            "projectName": "vettori_oggetti_1beaab9f"
+        },
+        {
+            "type": "java",
+            "name": "Calcolatrice",
+            "request": "launch",
+            "mainClass": "gui_calcolatrice.Calcolatrice",
+            "projectName": "vettori_oggetti_1beaab9f"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}

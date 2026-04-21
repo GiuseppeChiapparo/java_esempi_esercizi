@@ -1,4 +1,4 @@
-
+package gui_giocatori;
 public class Giocatore {
     private String nome;
     private int goal;
@@ -28,6 +28,6 @@ public class Giocatore {
     @Override
     public String toString() {
         return nome + " | Goal: " + goal + " | Nazionale: " + goalNazionale + 
-               " | Capitano: " + (capitano ? "Sì" : "No");
+               " | Capitano: " + (capitano ? "Sï¿½" : "No");
     }
 }

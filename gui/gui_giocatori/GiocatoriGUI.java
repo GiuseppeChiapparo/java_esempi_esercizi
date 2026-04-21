@@ -1,3 +1,5 @@
+package gui_giocatori;
+
 import java.awt.*;
 import java.util.ArrayList;
 
